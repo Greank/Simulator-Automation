@@ -31,6 +31,7 @@
 ## 資料夾結構
 
 模擬器自動化專案/ 
+
 ├── main.py
 
 ├── adb_controller.py 
