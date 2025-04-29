@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>SD 鋼彈 G世代 永恆 (台服&國際服自選)</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        h1 { margin-bottom: 20px; }
+        table { width: 100%; }
+        @media (max-width: 768px) {
+            table, thead, tbody, th, td, tr { display: block; }
+            td { border: none; border-bottom: 1px solid #eee; padding: 8px; }
+        }
+        .char-item {
+            text-align: center;
+            width: 90px;
+        }
+        .char-label {
+        font-size: 16px;      /* ✅ 放大字體 */
+        font-weight: bold;    /* ✅ 加粗更清楚 */
+        color: #222;
+        margin-top: 6px;
+        }
+        .char-label input {
+        width: 48px;
+        font-size: 16px;       /* ✅ 放大數字輸入框的字體 */
+        text-align: center;
+        padding: 2px;
+        }
+        .char-item.selected img {
+        border: 2px solid #f00;
+        }
+        .char-item.selected {
+        background-color: #ffecec;
+        box-shadow: 0 0 5px rgba(255, 0, 0, 0.4);
+        }
+        /* 1. 表格欄位統一置中 */
+        #record-table th,
+        #record-table td {
+        text-align: center;
+        vertical-align: middle;
+        white-space: nowrap;
+        }
+
+        /* 2. 只放圖示那欄允許寬一點 */
+        #record-table td:nth-child(圖示分布那一欄位置) {
+        white-space: normal;
+        max-width: 400px;
+        }
+
+        /* 3. 其餘欄位盡量壓窄 */
+        #record-table th,
+        #record-table td {
+        padding: 4px 8px;
+        font-size: 14px;
+        min-width: 40px;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>SD 鋼彈 G世代 永恆 (台服&國際服自選)</h1>
+    
+    <script>
+        function searchFilter() {
+            const name = document.getElementById("ur-name").value;
+            const count = parseInt(document.getElementById("ur-count").value);
+
+            fetch("/api/filter", {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ [name]: count })
+            })
+            .then(res => res.json())
+            .then(data => {
+                const table = $('#record-table').DataTable();
+                table.clear().rows.add(data).draw();
+            });
+        }
+    </script>
+
+    <h3>🔍 選擇角色進行搜尋</h3>
+    <div class="character-search" style="display: flex; flex-wrap: wrap; gap: 10px;">
+    <!-- 每個角色一個 item -->
+    <div class="char-item" data-name="能天使">
+        <img src="/images/能天使.png" width="64" height="64" onclick="enableInput(this)">
+        <div class="char-label">能天使</div>
+    </div>
+
+    <div class="char-item" data-name="海盜">
+        <img src="/images/海盜.png" width="64" height="64" onclick="enableInput(this)">
+        <div class="char-label">海盜</div>
+    </div>
+
+    <div class="char-item" data-name="沙薩比">
+        <img src="/images/沙薩比.png" width="64" height="64" onclick="enableInput(this)">
+        <div class="char-label">沙薩比</div>
+    </div>
+
+    <div class="char-item" data-name="自由">
+        <img src="/images/自由.png" width="64" height="64" onclick="enableInput(this)">
+        <div class="char-label">自由</div>
+    </div>
+
+    <div class="char-item" data-name="吉姆">
+        <img src="/images/吉姆.png" width="64" height="64" onclick="enableInput(this)">
+        <div class="char-label">吉姆</div>
+    </div>
+
+    <div class="char-item" data-name="獵魔">
+        <img src="/images/獵魔.png" width="64" height="64" onclick="enableInput(this)">
+        <div class="char-label">獵魔</div>
+    </div>
+
+    <div class="char-item" data-name="天鵝">
+        <img src="/images/天鵝.png" width="64" height="64" onclick="enableInput(this)">
+        <div class="char-label">天鵝</div>
+    </div>
+
+    <div class="char-item" data-name="風零">
+        <img src="/images/風零.png" width="64" height="64" onclick="enableInput(this)">
+        <div class="char-label">風零</div>
+    </div>
+
+    <div class="char-item" data-name="鋼彈Ez8">
+        <img src="/images/鋼彈Ez8.png" width="64" height="64" onclick="enableInput(this)">
+        <div class="char-label">鋼彈Ez8</div>
+    </div>
+
+    <div class="char-item" data-name="獨角獸">
+        <img src="/images/獨角獸.png" width="64" height="64" onclick="enableInput(this)">
+        <div class="char-label">獨角獸</div>
+    </div>
+
+    <div class="char-item" data-name="初鋼">
+        <img src="/images/初鋼.png" width="64" height="64" onclick="enableInput(this)">
+        <div class="char-label">初鋼</div>
+    </div>
+
+    <div class="char-item" data-name="NT鋼彈">
+        <img src="/images/NT鋼彈.png" width="64" height="64" onclick="enableInput(this)">
+        <div class="char-label">NT鋼彈</div>
+    </div>
+
+    <div class="char-item" data-name="v鋼">
+        <img src="/images/v鋼.png" width="64" height="64" onclick="enableInput(this)">
+        <div class="char-label">v鋼</div>
+    </div>
+
+    <div class="char-item" data-name="鳳凰">
+        <img src="/images/鳳凰.png" width="64" height="64" onclick="enableInput(this)">
+        <div class="char-label">鳳凰</div>
+    </div>
+
+    <div class="char-item" data-name="比查‧奧雷格&新阿伽馬號">
+        <img src="/images/比查‧奧雷格&新阿伽馬號.png" width="64" height="64" onclick="enableInput(this)">
+        <div class="char-label">比查‧奧雷格&新阿伽馬號</div>
+    </div>
+    
+    <div class="char-item" data-name="古荻莉亞‧藍那‧伯恩斯坦&漁火">
+        <img src="/images/古荻莉亞‧藍那‧伯恩斯坦&漁火.png" width="64" height="64" onclick="enableInput(this)">
+        <div class="char-label">古荻莉亞‧藍那‧伯恩斯坦&漁火</div>
+    </div>
+
+    <div class="char-item" data-name="布萊德‧諾亞&白色基地">
+        <img src="/images/布萊德‧諾亞&白色基地.png" width="64" height="64" onclick="enableInput(this)">
+        <div class="char-label">布萊德‧諾亞&白色基地</div>
+    </div>
+
+    <div class="char-item" data-name="米奧莉奈‧倫布蘭&學園艦">
+        <img src="/images/米奧莉奈‧倫布蘭&學園艦.png" width="64" height="64" onclick="enableInput(this)">
+        <div class="char-label">米奧莉奈‧倫布蘭&學園艦</div>
+    </div>
+
+    <div class="char-item" data-name="芙勞‧寶&白色基地">
+        <img src="/images/芙勞‧寶&白色基地.png" width="64" height="64" onclick="enableInput(this)">
+        <div class="char-label">芙勞‧寶&白色基地</div>
+    </div>
+
+    <div class="char-item" data-name="深村玲&苞型運輸艇">
+        <img src="/images/深村玲&苞型運輸艇.png" width="64" height="64" onclick="enableInput(this)">
+        <div class="char-label">深村玲&苞型運輸艇</div>
+    </div>
+
+    <div class="char-item" data-name="莉莉娜‧多莉安&皮斯美麗昂">
+        <img src="/images/莉莉娜‧多莉安&皮斯美麗昂.png" width="64" height="64" onclick="enableInput(this)">
+        <div class="char-label">莉莉娜‧多莉安&皮斯美麗昂</div>
+    </div>
+
+    <div class="char-item" data-name="奧爾加‧伊茲卡&漁火">
+        <img src="/images/奧爾加‧伊茲卡&漁火.png" width="64" height="64" onclick="enableInput(this)">
+        <div class="char-label">奧爾加‧伊茲卡&漁火</div>
+    </div>
+
+    <div class="char-item" data-name="蒂法‧安迪爾&自由號">
+        <img src="/images/蒂法‧安迪爾&自由號.png" width="64" height="64" onclick="enableInput(this)">
+        <div class="char-label">蒂法‧安迪爾&自由號</div>
+    </div>
+
+    <div class="char-item" data-name="漢肯‧貝克納&拉迪修">
+        <img src="/images/漢肯‧貝克納&拉迪修.png" width="64" height="64" onclick="enableInput(this)">
+        <div class="char-label">漢肯‧貝克納&拉迪修</div>
+    </div>
+
+    <div class="char-item" data-name="瑪琉‧拉米亞斯&大天使號">
+        <img src="/images/瑪琉‧拉米亞斯&大天使號.png" width="64" height="64" onclick="enableInput(this)">
+        <div class="char-label">瑪琉‧拉米亞斯&大天使號</div>
+    </div>
+
+    <div class="char-item" data-name="瑪麗娜‧伊士麥&托勒密號2型">
+        <img src="/images/瑪麗娜‧伊士麥&托勒密號2型.png" width="64" height="64" onclick="enableInput(this)">
+        <div class="char-label">瑪麗娜‧伊士麥&托勒密號2型</div>
+    </div>
+
+    <div class="char-item" data-name="皇‧李‧諾瑞加&托勒密號">
+        <img src="/images/皇‧李‧諾瑞加&托勒密號.png" width="64" height="64" onclick="enableInput(this)">
+        <div class="char-label">皇‧李‧諾瑞加&托勒密號</div>
+    </div>
+
+    <div class="char-item" data-name="安德魯‧巴爾特菲爾德&永恆號">
+        <img src="/images/安德魯‧巴爾特菲爾德&永恆號.png" width="64" height="64" onclick="enableInput(this)">
+        <div class="char-label">安德魯‧巴爾特菲爾德&永恆號</div>
+    </div>
+
+    <div class="char-item" data-name="花園麗&阿伽馬">
+        <img src="/images/花園麗&阿伽馬.png" width="64" height="64" onclick="enableInput(this)">
+        <div class="char-label">花園麗&阿伽馬</div>
+    </div>
+    
+
+    <!-- 其他角色再複製這個 div 結構 -->
+    </div>
+    <!-- 🌟 美化搜尋按鈕區 -->
+    <div style="text-align: center; margin-top: 20px;">
+        <button 
+            onclick="submitCharacterFilter()" 
+            style="
+                background-color: #4CAF50;
+                color: white;
+                font-size: 18px;
+                padding: 10px 24px;
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;"
+            onmouseover="this.style.backgroundColor='#45a049'"
+            onmouseout="this.style.backgroundColor='#4CAF50'"
+        >
+            🔍 搜尋
+        </button>
+    </div>
+    
+
+    <table id="record-table" class="display">
+        <thead>
+            <tr>
+              <th>ID</th>
+              <th>UR 總數</th>
+              <th>角色</th>  <!-- ✅ 新增圖示欄 -->
+              <th>💰總金額(台幣)</th> <!-- ✅ 這是新增的欄位 -->
+            </tr>
+          </thead>
+          
+        <tbody></tbody>
+    </table>
+
+    
+
+
+    <script>
+        fetch("/api/records")
+            .then(res => res.json())
+            .then(data => {
+                const table = $('#record-table').DataTable({
+                    data: data,
+                    columns: [
+                        { data: 'id' },
+                        { data: 'total_count' },
+                        {
+                            data: 'ur_counts',
+                            render: function (counts) {
+                                if (!Array.isArray(counts)) return '';
+
+                                return counts
+                                .filter(c => c.count > 0)
+                                .map(c => {
+                                    const url = `/images/${c.name}.png`;
+                                    const imgs = Array(c.count).fill(`<img src="${url}" title="${c.name}" >`).join("");
+                                    return `
+                                    <div style="display:inline-block; text-align:center; margin:5px;">
+                                        ${imgs}
+                                        <div style="font-size:12px; color:#444;">${c.name}</div>
+                                    </div>
+                                    `;
+                                })
+                                .join("");
+                            }
+                        },
+                        {
+                            data: 'ur_counts',
+                            render: function (counts) {
+                                const priceMap = {
+                                    "能天使": 50,
+                                    "海盜": 30,
+                                    "沙薩比": 30,
+                                    "吉姆": 10,
+                                    "獵魔": 5,
+                                    "天鵝": 10,
+                                    "風零": 20,
+                                    "鋼彈Ez8": 10,
+                                    "初鋼": 5,
+                                    "NT鋼彈": 5,
+                                    "v鋼": 10,
+                                    "鳳凰": 20,
+                                    "自由": 20,
+                                    "獨角獸": 20,
+                                    "比查‧奧雷格&新阿伽馬號": 20,
+                                    "古荻莉亞‧藍那‧伯恩斯坦&漁火": 20,
+                                    "布萊德‧諾亞&白色基地": 20,
+                                    "米奧莉奈‧倫布蘭&學園艦": 20,
+                                    "芙勞‧寶&白色基地": 20,
+                                    "深村玲&苞型運輸艇": 20,
+                                    "莉莉娜‧多莉安&皮斯美麗昂": 20,
+                                    "奧爾加‧伊茲卡&漁火": 20,
+                                    "蒂法‧安迪爾&自由號": 20,
+                                    "漢肯‧貝克納&拉迪修": 20,
+                                    "瑪琉‧拉米亞斯&大天使號": 20,
+                                    "瑪麗娜‧伊士麥&托勒密號2型": 20,
+                                    "皇‧李‧諾瑞加&托勒密號": 20,
+                                    "安德魯‧巴爾特菲爾德&永恆號": 20,
+                                    "花園麗&阿伽馬": 20,
+                                };
+
+                                let total = 0;
+                                let roleTypes = 0;
+
+                                counts.forEach(c => {
+                                    if (priceMap[c.name]) {
+                                        total += priceMap[c.name] * c.count;
+                                    }
+                                });
+
+                                // ✅ 計算有幾種角色有出現
+                                const typesUsed = counts
+                                    .filter(c => priceMap[c.name] && c.count > 0)
+                                    .map(c => c.name);
+
+                                const uniqueTypes = [...new Set(typesUsed)];
+                                roleTypes = uniqueTypes.length;
+
+                                if (roleTypes > 0) {
+                                    const multiplier = 1 + 0.2 * roleTypes;
+                                    let result = total * multiplier;
+                                    result = Math.floor(result / 10) * 10;
+                                    return `${result} 元`;
+                                } else {
+                                    return "0 元";
+                                }
+                            }
+                        },
+                    ],
+                    language: {
+                        search: "搜尋：",
+                        lengthMenu: "每頁顯示 _MENU_ 筆",
+                        zeroRecords: "找不到資料",
+                        info: "第 _START_ 到 _END_ 筆，共 _TOTAL_ 筆",
+                        infoEmpty: "沒有資料",
+                        paginate: {
+                            first: "第一頁",
+                            last: "最後一頁",
+                            next: "下一頁",
+                            previous: "上一頁"
+                        }
+                    }
+                });
+            });
+    </script>
+    
+    <script>
+        function submitCharacterFilter() {
+          const result = {};
+          document.querySelectorAll(".character-list li").forEach(li => {
+            const count = parseInt(li.querySelector("input").value);
+            const name = li.getAttribute("data-name");
+            if (count > 0) {
+              result[name] = count;
+            }
+          });
+      
+          fetch("/api/filter", {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(result)
+          })
+          .then(res => res.json())
+          .then(data => {
+            const table = $('#record-table').DataTable();
+            table.clear().rows.add(data).draw();
+          });
+        }
+      </script>
+
+    <script>
+        // 點圖片後變成數量輸入框
+        function enableInput(img) {
+        const parent = img.parentElement;
+        const label = parent.querySelector('.char-label');
+        const name = parent.dataset.name;
+
+        const input = label.querySelector('input');
+
+        // ✅ 如果已經是輸入框 → 取消選擇（還原）
+        if (input) {
+            parent.classList.remove("selected");  // 拿掉紅框
+            label.innerHTML = name;               // 還原成文字
+            return;
+        }
+
+        // ✅ 否則 → 選擇角色（轉為輸入框）
+        const inputBox = document.createElement('input');
+        inputBox.type = "number";
+        inputBox.min = 1;
+        inputBox.value = 1;
+
+        parent.classList.add("selected");      // 加上紅框
+        label.innerHTML = '';
+        label.appendChild(inputBox);
+        inputBox.focus();
+        }
+
+    
+        // 點搜尋按鈕：收集所有輸入值並送出
+        function submitCharacterFilter() {
+        const filters = {};
+        document.querySelectorAll('.char-item').forEach(item => {
+            const input = item.querySelector('input');
+            if (input) {
+            const count = parseInt(input.value);
+            const name = item.dataset.name;
+            if (count > 0) {
+                filters[name] = count;
+            }
+            }
+        });
+    
+        console.log("送出條件：", filters);
+    
+        fetch("/api/filter", {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(filters)
+        })
+        .then(res => res.json())
+        .then(data => {
+            const table = $('#record-table').DataTable();
+            table.clear().rows.add(data).draw();
+        })
+        .catch(err => console.error("❌ 搜尋失敗", err));
+        }
+    </script>
+      
+
+
+</body>
+</html>
