@@ -80,9 +80,13 @@
 
     使用 ngrok http 5000
 
-預覽截圖：
-    images/preview_01.jpg
-    images/preview_02.jpg
+##  畫面預覽
+
+###  主頁面（篩選與搜尋）
+![搜尋畫面](templates/images/preview1.png)
+
+###  圖片查驗頁（帳號查核）
+![查驗頁](templates/images/preview2.png)
 
 作者心得
 本專案重點在於：
