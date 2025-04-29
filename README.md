@@ -83,10 +83,10 @@
 ##  畫面預覽
 
 ###  主頁面（篩選與搜尋）
-![搜尋畫面](templates/images/preview1.png)
+![搜尋畫面](images/preview1.jpg)
 
 ###  圖片查驗頁（帳號查核）
-![查驗頁](templates/images/preview2.png)
+![查驗頁](images/preview2.jpg)
 
 作者心得
 本專案重點在於：
