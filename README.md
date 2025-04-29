@@ -32,9 +32,13 @@
 
 模擬器自動化專案/ 
 ├── main.py
+
 ├── adb_controller.py 
+
 ├── app.py 
+
 ├── db_controller.py 
+
 ├── image_loader.py 
 ├── screen_capture.py 
 ├── simulator.py 
