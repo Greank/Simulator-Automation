@@ -40,16 +40,27 @@
 ├── db_controller.py 
 
 ├── image_loader.py 
+
 ├── screen_capture.py 
+
 ├── simulator.py 
+
 ├── write_excel.py
+
 ├── images/ # 圖庫比對用
+
 ├── templates/ 
+
 │ ├── index.html # 內部版 
+
 │ ├── client.html # 客戶版 
+
 │ ├── id_check.html # 帳號驗證頁 
+
 │ └── images/ # 搜尋用圖片、結果圖片
+
 ├── search.py # 查找帳號 
+
 ├── final_submit.py # 帳號驗證並輸入模擬器 └── README.md
 
 
