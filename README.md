@@ -90,7 +90,7 @@
 
     http://localhost:5000/client ➔ 客戶版 (無密碼)
 
-    http://localhost:5000/id_check ➔ 帳號查驗
+    http://localhost:5000/id_check ➔ 帳號查驗 (密碼保護)
 
 5. 若公開到外網
 
